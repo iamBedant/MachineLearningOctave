@@ -29,6 +29,9 @@ h = zeros(m,1);
 h = sigmoid(X* theta);
 J = (-1.0/m)*sum(y.*log(h) + (1-y).*log(1-h));
 
+
+% grad = (h-y)'*X;
+
 for j = 1:n
     d = h-y;
     v = d'*X(:,j);
