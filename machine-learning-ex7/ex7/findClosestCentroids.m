@@ -21,8 +21,15 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
+m = size(X, 1);
+tmp_d = zeros(K, 1);
+for i=1:m,
+    x = X(i,:);
+    for j=1:K,
+        tmp_d(j) = norm(x - centroids(j,:));
+    end
+    [v, idx(i)] = min(tmp_d);
+end
 
 
 
