@@ -10,8 +10,10 @@ bestEpsilon = 0;
 bestF1 = 0;
 F1 = 0;
 
+
 stepsize = (max(pval) - min(pval)) / 1000;
 for epsilon = min(pval):stepsize:max(pval)
+
     
     % ====================== YOUR CODE HERE ======================
     % Instructions: Compute the F1 score of choosing epsilon as the
@@ -26,7 +28,13 @@ for epsilon = min(pval):stepsize:max(pval)
 
 
 
-
+    predictions = (pval < epsilon);
+    tp = sum((yval == 1) .* (predictions == 1));
+    fp = sum((yval == 0) .* (predictions == 1));
+    fn = sum((yval == 1) .* (predictions == 0));
+    prec = tp / (tp + fp);
+    rec  = tp / (tp + fn);
+    F1 = (2*prec*rec)/(prec+rec);
 
 
 
